@@ -1,221 +1,261 @@
 
-/* =====================================
-   1. CONFIGURACION GENERAL
-===================================== */
+/* ============================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+    --green-dark: #286344;
+    --green: #4e9b68;
+    --green-light: #e5f4e8;
+    --mint: #f2faf1;
+    --cream: #fffdf5;
+
+    --text: #284536;
+    --muted: #6d8374;
+
+    --blue: #e8f3ff;
+    --orange: #fff0dc;
+    --pink: #fff0ef;
+
+    --shadow: 0 12px 35px rgba(42, 93, 62, 0.10);
+}
 
 * {
     box-sizing: border-box;
 }
 
-:root {
-    --dark-green: #205b3a;
-    --green: #318653;
-    --light-green: #e9f5d9;
-    --cream: #fffdf3;
-    --text: #294633;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--cream);
     color: var(--text);
+    background: #fbfdf8;
+    font-family: 'Nunito', 'Trebuchet MS', sans-serif;
 }
 
 button,
-a {
-    font-family: inherit;
+input {
+    font: inherit;
 }
 
 button {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.58;
+}
+
 .hidden {
     display: none !important;
 }
 
-/* =====================================
-   2. BARRA SUPERIOR
-===================================== */
+/* ============================================================
+   2. ENCABEZADO
+============================================================ */
 
 .top-bar {
+    min-height: 76px;
+    padding: 18px 6%;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 18px 7%;
-    background: white;
-    border-bottom: 2px solid #e1edda;
+    justify-content: space-between;
+    gap: 15px;
+
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e8f0e6;
 }
 
 .logo {
-    color: var(--dark-green);
+    color: var(--green-dark);
+    font-size: 1.45rem;
+    font-weight: 900;
     text-decoration: none;
-    font-size: 25px;
-    font-weight: bold;
 }
 
-.header-label {
-    color: var(--green);
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-/* =====================================
-   3. PORTADA PRINCIPAL
-===================================== */
-
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 65px 10%;
-    min-height: 470px;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 85% 20%, #d6efb8, transparent 32%),
-        linear-gradient(135deg, #eff8e7, #dff0d1);
-}
-
-.hero-content {
-    max-width: 560px;
-}
-
+.header-label,
 .tag {
     display: inline-block;
-    padding: 9px 14px;
-    border-radius: 20px;
-    background: #d5edc1;
-    color: var(--dark-green);
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
+
+    color: var(--green-dark);
+    background: #e5f4e5;
+
+    border-radius: 30px;
+    padding: 8px 14px;
+
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    font-weight: 900;
 }
 
-.hero h1 {
-    margin: 20px 0 8px;
-    font-size: clamp(48px, 7vw, 82px);
+/* ============================================================
+   3. PANTALLA PRINCIPAL
+============================================================ */
+
+main {
+    min-height: 70vh;
+}
+
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 75px 6% 80px;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-content h1 {
+    margin: 24px 0 16px;
+
+    color: #234e35;
+
+    font-size: clamp(3rem, 7vw, 5.7rem);
+    letter-spacing: -0.05em;
     line-height: 1;
-    color: var(--dark-green);
-    letter-spacing: -3px;
 }
 
-.hero h1 span {
-    color: #69a93f;
+.hero-content h1 span {
+    color: #6db57b;
 }
 
-.hero h2 {
-    margin: 15px 0;
-    font-size: 24px;
+.hero-content h2 {
+    margin: 0 0 14px;
+    font-size: clamp(1.35rem, 2.8vw, 2rem);
 }
 
-.hero-content > p {
-    max-width: 480px;
-    line-height: 1.8;
-    color: #526c58;
+.hero-content p,
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
 }
 
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 12px;
     margin-top: 25px;
 }
 
-.btn {
-    padding: 14px 23px;
-    border: none;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: bold;
-    transition: transform 0.2s, background 0.2s;
+.hero-note {
+    font-size: 0.9rem;
+    font-weight: 800;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
+/* ============================================================
+   4. BOTONES GENERALES
+============================================================ */
+
+.btn {
+    border: 0;
+    border-radius: 14px;
+    padding: 13px 21px;
+
+    font-weight: 900;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(43, 116, 67, 0.16);
+}
+
+.btn:focus-visible,
+.level-button:focus-visible {
+    outline: 3px solid #8bcf96;
+    outline-offset: 3px;
 }
 
 .btn-primary {
-    background: var(--green);
     color: white;
-    box-shadow: 0 5px 0 #23663d;
-}
-
-.btn-primary:hover {
-    background: var(--dark-green);
+    background: linear-gradient(135deg, #4d9b66, #347b50);
+    box-shadow: 0 6px 15px rgba(54, 123, 80, 0.14);
 }
 
 .btn-secondary {
-    background: white;
-    color: var(--dark-green);
-    border: 2px solid #cce1bf;
+    color: var(--green-dark);
+    background: #eaf5e9;
+    border: 1px solid #d4e9d4;
 }
 
-.hero-content .hero-note {
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 25px;
-}
-
-/* =====================================
-   4. TIERRA Y DECORACIONES
-===================================== */
+/* ============================================================
+   5. ILUSTRACIÓN DE LA TIERRA
+============================================================ */
 
 .earth-container {
-    position: relative;
+    min-height: 320px;
+
     display: grid;
     place-items: center;
-    flex-shrink: 0;
-    width: 280px;
-    height: 280px;
-    margin-right: 25px;
-    border-radius: 50%;
-    background: #c5e7a9;
+
+    position: relative;
 }
 
 .earth {
+    width: clamp(210px, 27vw, 310px);
+    aspect-ratio: 1;
+
     display: grid;
     place-items: center;
-    width: 220px;
-    height: 220px;
+
+    font-size: clamp(8rem, 17vw, 13rem);
+
     border-radius: 50%;
-    background: #ffffff;
-    font-size: 130px;
-    box-shadow: 0 12px 30px #295c3520;
-    animation: float 3s ease-in-out infinite;
+
+    background: radial-gradient(
+        circle at 35% 25%,
+        #d8f4b6,
+        #a5dca2 55%,
+        #77bf87
+    );
+
+    box-shadow: 0 24px 55px rgba(104, 169, 118, 0.19);
+
+    animation: earth-float 4s ease-in-out infinite;
 }
 
 .decoration {
     position: absolute;
-    display: grid;
-    place-items: center;
-    width: 54px;
-    height: 54px;
+
+    font-size: 2.4rem;
+
     background: white;
     border-radius: 50%;
-    box-shadow: 0 5px 15px #295c3518;
-    font-size: 29px;
+    padding: 12px;
+
+    box-shadow: var(--shadow);
 }
 
 .leaf {
-    top: 0;
-    left: 10px;
+    top: 15%;
+    left: 12%;
 }
 
 .recycle {
-    right: -15px;
-    top: 70px;
+    right: 7%;
+    top: 25%;
 }
 
 .flower {
-    bottom: 0;
-    left: 25px;
+    bottom: 12%;
+    left: 18%;
 }
 
-@keyframes float {
-    0%, 100% {
+@keyframes earth-float {
+    0%,
+    100% {
         transform: translateY(0);
     }
 
@@ -224,212 +264,991 @@ button {
     }
 }
 
-/* =====================================
-   5. SECCION DE NIVELES
-===================================== */
+/* ============================================================
+   6. TARJETAS DE LOS NIVELES
+============================================================ */
 
 .levels-section {
-    padding: 65px 8%;
+    padding: 55px 6% 80px;
+    background: #f1f8ee;
 }
 
 .section-heading {
     text-align: center;
-    margin-bottom: 35px;
+    margin: 0 auto 32px;
 }
 
 .section-heading h2 {
-    margin-bottom: 8px;
-    font-size: 32px;
-    color: var(--dark-green);
+    margin: 18px 0 5px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
 .section-heading p {
-    color: #708474;
+    margin: 0 auto;
 }
 
 .levels-grid {
+    max-width: 1100px;
+    margin: auto;
+
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
-    max-width: 1100px;
-    margin: auto;
 }
 
 .level-card {
     padding: 27px;
-    border: 2px solid transparent;
-    border-radius: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
+
+    background: white;
+    border: 1px solid #e7efe4;
+    border-radius: 24px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .level-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px #244e3515;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 38px rgba(42, 93, 62, 0.14);
 }
 
 .level-green {
-    background: #e6f3d7;
-    border-color: #c7e2ae;
+    border-top: 6px solid #77bd80;
 }
 
 .level-blue {
-    background: #e1f0fa;
-    border-color: #c2deef;
+    border-top: 6px solid #84b9ed;
 }
 
 .level-orange {
-    background: #fff0d7;
-    border-color: #f0dcad;
+    border-top: 6px solid #f0bd78;
 }
 
 .level-icon {
-    font-size: 43px;
-    margin-bottom: 15px;
+    font-size: 2.7rem;
+    margin-bottom: 12px;
 }
 
 .level-number {
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
+    color: var(--muted);
+    font-weight: 900;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
 }
 
 .level-card h3 {
-    font-size: 21px;
-    margin: 12px 0;
+    margin: 8px 0;
+    font-size: 1.35rem;
 }
 
 .level-card p {
-    min-height: 65px;
-    line-height: 1.6;
-    color: #53695a;
-    font-size: 14px;
+    min-height: 60px;
+    color: var(--muted);
+    line-height: 1.55;
 }
 
-.level-status {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 10px;
-    border-radius: 20px;
-    background: #ffffffa8;
-    color: var(--dark-green);
-    font-size: 10px;
-    font-weight: bold;
+.level-button {
+    width: 100%;
+
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 8px;
+
+    font-weight: 900;
+
+    color: var(--green-dark);
+    background: #e5f4e5;
+
+    transition: transform 0.2s ease;
 }
 
-/* =====================================
-   6. PANTALLA DEL NIVEL 1
-===================================== */
+.level-button:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+.level-blue .level-button {
+    background: var(--blue);
+}
+
+.level-orange .level-button {
+    background: var(--orange);
+}
+
+/* ============================================================
+   7. PANTALLA DEL JUEGO
+============================================================ */
 
 .game-screen {
-    min-height: 400px;
-    padding: 45px 8%;
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 5% 75px;
+}
+
+.player-status {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin: 18px 0;
+    padding: 13px 18px;
+
+    border: 1px solid #dceedd;
+    background: #f0f8ee;
+    border-radius: 15px;
+}
+
+.player-status p {
+    margin: 0;
+}
+
+.player-status strong {
+    color: var(--green-dark);
 }
 
 .game-intro {
-    max-width: 650px;
-    margin: 30px auto;
     text-align: center;
+    padding: 15px 0 8px;
 }
 
 .game-intro h2 {
-    color: var(--dark-green);
-    font-size: 34px;
+    margin: 15px 0 8px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
 .game-intro p {
-    line-height: 1.8;
+    color: var(--muted);
+    line-height: 1.6;
 }
 
-.coming-box {
-    margin-top: 30px;
-    padding: 30px;
-    border: 2px dashed #9bc888;
+/* ============================================================
+   8. PUNTAJE Y PROGRESO
+============================================================ */
+
+.score-panel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    margin: 25px 0 18px;
+}
+
+.score-box {
+    min-width: 150px;
+    padding: 13px 22px;
+
+    display: grid;
+    gap: 3px;
+
+    text-align: center;
+
+    background: white;
+    border: 1px solid #e1eee0;
+    border-radius: 16px;
+
+    box-shadow: var(--shadow);
+}
+
+.score-box span {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.score-box strong {
+    color: var(--green-dark);
+    font-size: 1.6rem;
+}
+
+/* ============================================================
+   9. MENSAJES DEL JUEGO
+============================================================ */
+
+.game-message {
+    padding: 12px 16px;
+    margin: 15px 0 25px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #426a4b;
+    background: #edf7eb;
+}
+
+/* ============================================================
+   10. NIVEL 1: RESIDUOS
+============================================================ */
+
+.level-content {
+    display: grid;
+    gap: 25px;
+}
+
+.waste-area,
+.bins-area,
+.quiz-panel,
+.challenge-panel {
+    padding: 24px;
+
+    background: white;
+    border: 1px solid #e5eee2;
+    border-radius: 22px;
+
+    box-shadow: var(--shadow);
+}
+
+.waste-area h3,
+.bins-area h3 {
+    margin: 0 0 5px;
+}
+
+.waste-area > p {
+    margin-top: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.waste-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.waste-item {
+    min-width: 0;
+    min-height: 105px;
+    padding: 10px 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    border: 2px solid #e3eee1;
+    border-radius: 15px;
+
+    background: #f8fcf6;
+    color: var(--text);
+
+    font-weight: 800;
+    text-align: center;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.waste-item:hover {
+    border-color: #64a974;
+    background: #eaf7e8;
+    transform: translateY(-2px);
+}
+
+.waste-item.selected {
+    border-color: #4e9b68;
+    background: #e1f3df;
+    box-shadow: 0 0 0 3px rgba(78, 155, 104, 0.13);
+}
+
+.waste-item:disabled {
+    opacity: 0.35;
+    text-decoration: line-through;
+}
+
+.waste-emoji {
+    font-size: 2rem;
+}
+
+/* ============================================================
+   11. CONTENEDORES DE RECICLAJE
+============================================================ */
+
+.bins-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.recycling-bin {
+    min-width: 0;
+    min-height: 180px;
+    padding: 17px 10px;
+
+    border: 2px dashed #c9dfc8;
     border-radius: 18px;
-    background: #f0f8e8;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-.coming-box span {
-    font-size: 45px;
+.recycling-bin:hover,
+.recycling-bin:focus {
+    transform: translateY(-3px);
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 5px 16px rgba(42, 93, 62, 0.09);
 }
 
-.coming-box h3 {
-    color: var(--dark-green);
+.recycling-bin h4 {
+    margin: 8px 0 4px;
 }
 
-/* =====================================
-   7. VENTANA DE INSTRUCCIONES
-===================================== */
+.recycling-bin p {
+    margin: 0 0 10px;
+    color: #5d7565;
+    font-size: 0.82rem;
+}
+
+.bin-icon {
+    font-size: 2.3rem;
+}
+
+.bin-count {
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.bin-organic {
+    background: #eff8e9;
+}
+
+.bin-plastic {
+    background: #eaf5ff;
+}
+
+.bin-paper {
+    background: #fff7df;
+}
+
+.bin-glass {
+    background: #e9f8f6;
+}
+
+/* ============================================================
+   12. NIVEL 2: CUESTIONARIO
+============================================================ */
+
+.quiz-panel {
+    max-width: 780px;
+    width: 100%;
+    margin: auto;
+
+    padding: clamp(20px, 5vw, 40px);
+
+    text-align: center;
+}
+
+.quiz-progress {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    color: var(--muted);
+    font-weight: 900;
+    font-size: 0.85rem;
+}
+
+.quiz-illustration {
+    margin: 20px 0 10px;
+    font-size: 3.5rem;
+}
+
+.quiz-panel h3 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    line-height: 1.4;
+}
+
+.quiz-hint {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.quiz-option {
+    width: 100%;
+    white-space: normal;
+}
+
+/* ============================================================
+   13. NIVEL 3: RETOS ECOLÓGICOS
+============================================================ */
+
+.challenge-panel {
+    max-width: 780px;
+    width: 100%;
+    margin: auto;
+
+    padding: clamp(20px, 5vw, 40px);
+
+    text-align: center;
+}
+
+.challenge-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    text-align: left;
+}
+
+.challenge-icon {
+    font-size: 3rem;
+}
+
+#challenge-number {
+    color: var(--muted);
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+
+.challenge-header h3 {
+    margin: 5px 0;
+    font-size: 1.5rem;
+}
+
+.challenge-panel > p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.challenge-options {
+    display: grid;
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.challenge-choice {
+    display: block;
+    width: 100%;
+    padding: 15px;
+
+    text-align: left;
+
+    background: #f5faf2;
+    border: 2px solid #e1eddd;
+    border-radius: 12px;
+
+    color: var(--text);
+    font-weight: 800;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.challenge-choice:hover:not(:disabled) {
+    border-color: #8bc695;
+}
+
+.challenge-choice.selected {
+    border-color: var(--green);
+    background: #e5f4e5;
+}
+
+.challenge-choice:disabled {
+    opacity: 1;
+}
+
+#challenge-next-button,
+#quiz-next-button {
+    margin-top: 15px;
+}
+
+/* ============================================================
+   14. FINALIZACIÓN DE NIVEL
+============================================================ */
+
+.level-complete {
+    max-width: 680px;
+    margin: 25px auto 0;
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 24px;
+    background: #edf8e9;
+    border: 1px solid #d9ecd5;
+}
+
+.completion-icon {
+    font-size: 4rem;
+}
+
+.level-complete h2 {
+    font-size: 2rem;
+}
+
+.level-complete p {
+    line-height: 1.6;
+}
+
+.level-complete button {
+    margin: 7px;
+}
+
+/* ============================================================
+   15. REGISTRO DEL JUGADOR
+============================================================ */
+
+.registration-overlay,
+.feedback-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: grid;
+    place-items: center;
+
+    padding: 20px;
+
+    background: rgba(27, 58, 39, 0.48);
+    backdrop-filter: blur(5px);
+}
+
+.registration-card,
+.feedback-card {
+    width: min(100%, 490px);
+    padding: 32px;
+
+    text-align: center;
+
+    background: var(--cream);
+    border-radius: 25px;
+
+    box-shadow: 0 25px 80px rgba(23, 59, 42, 0.25);
+
+    animation: pop-in 0.22s ease-out;
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.registration-icon,
+.feedback-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 3.3rem;
+}
+
+.registration-card h2,
+.feedback-card h2 {
+    margin: 18px 0 8px;
+    font-size: 1.8rem;
+}
+
+.registration-card > p,
+.feedback-card > p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* Formulario de registro */
+
+#registration-form {
+    display: grid;
+    gap: 11px;
+
+    margin-top: 22px;
+
+    text-align: left;
+}
+
+#registration-form label {
+    font-weight: 900;
+}
+
+#player-name {
+    width: 100%;
+    padding: 14px;
+
+    border: 2px solid #d9e9d5;
+    border-radius: 12px;
+
+    outline: none;
+
+    background: white;
+    color: var(--text);
+}
+
+#player-name:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(107, 183, 122, 0.14);
+}
+
+#registration-form button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.form-error {
+    margin: 0;
+    color: #b33a35 !important;
+    font-size: 0.88rem;
+}
+
+/* ============================================================
+   16. POPUP DE RESPUESTAS
+============================================================ */
+
+/* =========================================
+   VENTANA EMERGENTE: RESPUESTA CORRECTA
+========================================= */
+
+.feedback-card.correct {
+    background: linear-gradient(145deg, #f0fff4, #dcfce7);
+    border: 3px solid #22c55e;
+    box-shadow: 0 15px 45px rgba(34, 197, 94, 0.25);
+    color: #166534;
+}
+
+.feedback-card.correct #feedback-icon {
+    background: #bbf7d0;
+    color: #15803d;
+    border: 2px solid #4ade80;
+    border-radius: 50%;
+}
+
+.feedback-card.correct #feedback-title {
+    color: #15803d;
+}
+
+.feedback-card.correct #feedback-message {
+    color: #166534;
+}
+
+.feedback-card.correct #feedback-points {
+    color: #15803d;
+    background: #bbf7d0;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   VENTANA EMERGENTE: RESPUESTA INCORRECTA
+========================================= */
+
+.feedback-card.incorrect {
+    background: linear-gradient(145deg, #fff5f5, #fee2e2);
+    border: 3px solid #ef4444;
+    box-shadow: 0 15px 45px rgba(239, 68, 68, 0.22);
+    color: #991b1b;
+}
+
+.feedback-card.incorrect #feedback-icon {
+    background: #fecaca;
+    color: #b91c1c;
+    border: 2px solid #f87171;
+    border-radius: 50%;
+}
+
+.feedback-card.incorrect #feedback-title {
+    color: #b91c1c;
+}
+
+.feedback-card.incorrect #feedback-message {
+    color: #991b1b;
+}
+
+.feedback-card.incorrect #feedback-points {
+    color: #b91c1c;
+    background: #fecaca;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   BOTÓN PARA CONTINUAR
+========================================= */
+
+.feedback-card #feedback-continue {
+    border: none;
+    border-radius: 14px;
+    padding: 12px 24px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-card.correct #feedback-continue {
+    background: #22c55e;
+    color: #ffffff;
+    box-shadow: 0 5px 12px rgba(34, 197, 94, 0.2);
+}
+
+.feedback-card.incorrect #feedback-continue {
+    background: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 5px 12px rgba(239, 68, 68, 0.2);
+}
+
+.feedback-card #feedback-continue:hover {
+    transform: translateY(-2px);
+}
+
+.feedback-card.correct #feedback-continue:hover {
+    background: #16a34a;
+}
+
+.feedback-card.incorrect #feedback-continue:hover {
+    background: #dc2626;
+}
+
+/* ============================================================
+   17. RESULTADOS FINALES
+============================================================ */
+
+.ranking-screen {
+    max-width: 900px;
+    margin: auto;
+    padding: 55px 5% 80px;
+}
+
+.ranking-header {
+    text-align: center;
+}
+
+.ranking-trophy {
+    margin: 15px 0 0;
+    font-size: 4rem;
+}
+
+.ranking-header h2 {
+    margin: 10px 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.ranking-header p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* Resumen de puntaje, niveles y tiempo */
+
+.ranking-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+
+    margin: 30px 0;
+}
+
+.ranking-stat {
+    display: grid;
+    gap: 8px;
+
+    text-align: center;
+
+    padding: 22px 12px;
+
+    border-radius: 17px;
+    background: white;
+    border: 1px solid #e1eee0;
+
+    box-shadow: var(--shadow);
+}
+
+.ranking-stat span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.ranking-stat strong {
+    color: var(--green-dark);
+    font-size: 1.8rem;
+}
+
+/* Lista del ranking */
+
+.ranking-table-container {
+    padding: 25px;
+
+    background: white;
+    border: 1px solid #e1eee0;
+    border-radius: 20px;
+
+    box-shadow: var(--shadow);
+}
+
+.ranking-table-container h3 {
+    margin-top: 0;
+}
+
+.ranking-table-container > p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.ranking-list {
+    padding-left: 30px;
+}
+
+.ranking-list li {
+    padding: 12px 14px;
+    margin: 8px 0;
+
+    background: #f2f8ef;
+    border-radius: 10px;
+
+    font-weight: 800;
+}
+
+.ranking-list li:first-child {
+    background: #fff4d9;
+}
+
+.rank-score {
+    float: right;
+    color: var(--green-dark);
+}
+
+.ranking-loading {
+    padding: 10px 0;
+    color: var(--muted);
+}
+
+.ranking-note {
+    font-size: 0.82rem;
+}
+
+.ranking-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+/* ============================================================
+   18. MODAL DE INSTRUCCIONES
+============================================================ */
 
 .modal {
     position: fixed;
     inset: 0;
-    z-index: 10;
+    z-index: 900;
+
     display: grid;
     place-items: center;
+
     padding: 20px;
-    background: #132b1dc9;
+
+    background: rgba(25, 62, 45, 0.5);
+    backdrop-filter: blur(4px);
 }
 
 .modal-content {
+    width: min(100%, 480px);
+
     position: relative;
-    width: 100%;
-    max-width: 440px;
+
     padding: 35px;
-    border-radius: 22px;
+
     background: white;
-    box-shadow: 0 15px 50px #0002;
+    border-radius: 22px;
+
+    box-shadow: var(--shadow);
 }
 
 .modal-icon {
-    font-size: 45px;
+    font-size: 2.7rem;
 }
 
 .modal-content h2 {
-    color: var(--dark-green);
+    margin-top: 10px;
 }
 
-.modal-content ul {
-    padding-left: 20px;
-    text-align: left;
-    line-height: 2.2;
+.modal-content li {
+    line-height: 1.7;
+    margin-bottom: 8px;
 }
 
 .close-button {
     position: absolute;
-    top: 12px;
+    top: 10px;
     right: 15px;
-    border: none;
+
+    border: 0;
     background: transparent;
-    color: #53695a;
-    font-size: 30px;
+
+    font-size: 2rem;
+    color: var(--muted);
 }
 
-/* =====================================
-   8. PIE DE PAGINA
-===================================== */
+/* ============================================================
+   19. PIE DE PÁGINA
+============================================================ */
 
 footer {
-    padding: 20px;
-    text-align: center;
-    background: var(--dark-green);
-    color: white;
-    font-size: 13px;
+    padding: 22px 6%;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    color: var(--muted);
+    background: white;
+
+    border-top: 1px solid #e8f0e6;
+
+    font-size: 0.85rem;
 }
 
 footer p {
-    margin: 5px;
+    margin: 4px 0;
 }
 
-/* =====================================
-   9. ADAPTACION A CELULARES
-===================================== */
+/* ============================================================
+   20. TABLET
+============================================================ */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .hero {
-        flex-direction: column-reverse;
+        grid-template-columns: 1fr;
         text-align: center;
-        padding: 45px 7%;
-        gap: 30px;
+        padding-top: 50px;
+    }
+
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-buttons {
@@ -437,279 +1256,235 @@ footer p {
     }
 
     .earth-container {
-        width: 220px;
-        height: 220px;
-        margin: 0;
-    }
-
-    .earth {
-        width: 170px;
-        height: 170px;
-        font-size: 100px;
+        min-height: 260px;
     }
 
     .levels-grid {
         grid-template-columns: 1fr;
+        max-width: 500px;
     }
 
     .level-card p {
-        min-height: auto;
+        min-height: 0;
     }
 
-    .header-label {
-        display: none;
+    .waste-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .section-heading h2 {
-        font-size: 27px;
-    }
-}
-
-
-/* =====================================
-   NIVEL 1: DRAG AND DROP
-===================================== */
-
-.score-panel {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 25px auto;
-}
-
-.score-box {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 140px;
-    padding: 18px;
-    border-radius: 16px;
-    background: white;
-    border: 2px solid #dcebd3;
-    text-align: center;
-}
-
-.score-box span {
-    color: #597361;
-    font-size: 14px;
-}
-
-.score-box strong {
-    color: #246b45;
-    font-size: 28px;
-}
-
-.game-message {
-    max-width: 700px;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 12px;
-    background: #e9f5d9;
-    color: #205b3a;
-    text-align: center;
-    font-weight: bold;
-}
-
-.game-message.error {
-    background: #ffe6df;
-    color: #9b3023;
-}
-
-.game-message.success {
-    background: #d8f3dc;
-    color: #205b3a;
-}
-
-.waste-area,
-.bins-area {
-    max-width: 1000px;
-    margin: 35px auto;
-}
-
-.waste-area h3,
-.bins-area h3 {
-    color: #205b3a;
-    font-size: 24px;
-}
-
-.waste-area > p {
-    color: #6a806e;
-}
-
-.waste-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.waste-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 125px;
-    padding: 15px 8px;
-    border: 2px solid #dbe9d3;
-    border-radius: 16px;
-    background: white;
-    color: #294633;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    cursor: grab;
-    transition: transform 0.2s, border 0.2s;
-}
-
-.waste-item:hover {
-    transform: translateY(-4px);
-    border-color: #69a93f;
-}
-
-.waste-item:focus-visible,
-.recycling-bin:focus-visible {
-    outline: 3px solid #205b3a;
-    outline-offset: 3px;
-}
-
-.waste-item.selected {
-    border: 3px solid #318653;
-    background: #e9f5d9;
-    transform: scale(1.04);
-}
-
-.waste-item.dragging {
-    opacity: 0.4;
-}
-
-.waste-item.sorted {
-    cursor: default;
-    opacity: 0.6;
-    background: #f0f4ed;
-}
-
-.waste-emoji {
-    font-size: 40px;
-}
-
-.bins-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.recycling-bin {
-    min-height: 190px;
-    padding: 20px 10px;
-    border: 3px dashed transparent;
-    border-radius: 18px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, border 0.2s;
-}
-
-.recycling-bin:hover {
-    transform: translateY(-4px);
-}
-
-.recycling-bin.drag-over {
-    border-color: #205b3a;
-    transform: scale(1.03);
-}
-
-.recycling-bin.correct-bin {
-    border-color: #318653;
-}
-
-.bin-organic {
-    background: #e4f3d5;
-    color: #28633c;
-}
-
-.bin-plastic {
-    background: #dceefa;
-    color: #205b83;
-}
-
-.bin-paper {
-    background: #fff0c9;
-    color: #805b13;
-}
-
-.bin-glass {
-    background: #eadff6;
-    color: #65458a;
-}
-
-.bin-icon {
-    display: block;
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-
-.recycling-bin h4 {
-    margin: 8px 0;
-    font-size: 16px;
-}
-
-.recycling-bin p {
-    font-size: 12px;
-}
-
-.bin-count {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 20px;
-    background: #ffffffbd;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.level-complete {
-    max-width: 600px;
-    margin: 35px auto;
-    padding: 30px;
-    border-radius: 22px;
-    background: #e9f5d9;
-    text-align: center;
-}
-
-.completion-icon {
-    font-size: 60px;
-}
-
-/* ADAPTACION PARA PANTALLAS PEQUEÑAS */
-
-@media (max-width: 700px) {
-    .waste-grid,
     .bins-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
+
+/* ============================================================
+   21. CELULARES
+============================================================ */
+
+@media (max-width: 520px) {
+    .top-bar {
+        padding: 15px 4%;
+    }
+
+    .logo {
+        font-size: 1.15rem;
+    }
+
+    .header-label {
+        padding: 7px;
+        font-size: 0.62rem;
+    }
+
+    .hero {
+        padding: 48px 5%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .earth-container {
+        min-height: 230px;
+    }
 
     .score-panel {
-        gap: 10px;
+        gap: 8px;
     }
 
     .score-box {
         min-width: 0;
         flex: 1;
+        padding: 12px 8px;
+    }
+
+    .waste-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bins-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .recycling-bin {
-        min-height: 165px;
+        min-height: 160px;
+        padding: 13px 5px;
+    }
+
+    .recycling-bin p {
+        font-size: 0.75rem;
+    }
+
+    .player-status {
+        flex-direction: column;
+    }
+
+    .ranking-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-card,
+    .feedback-card {
+        padding: 25px 20px;
+    }
+
+    .quiz-progress {
+        font-size: 0.73rem;
+    }
+
+    .level-complete {
+        padding: 25px 16px;
+    }
+
+    .level-complete button {
+        width: 100%;
+        margin: 6px 0;
+    }
+
+    .ranking-actions {
+        flex-direction: column;
+    }
+
+    .ranking-actions .btn {
+        width: 100%;
+    }
+
+    .modal-content {
+        padding: 28px 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
-@media (max-width: 380px) {
-    .waste-grid,
-    .bins-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-    }
+/* ============================================================
+   22. ACCESIBILIDAD: MENOS ANIMACIONES
+============================================================ */
 
-    .waste-item {
-        min-height: 105px;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================
+   RECYCLING EDUCATION SCREEN
+========================================= */
+
+.learning-screen {
+    padding: 60px 5%;
+    background: linear-gradient(135deg, #f0f8ee, #e3f3e5);
+}
+
+.learning-container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.learning-container h1 {
+    color: #286344;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 15px 0;
+}
+
+.learning-subtitle {
+    color: #52735d;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+}
+
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.learning-card {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(50, 100, 60, 0.08);
+    border: 2px solid #e2eee0;
+}
+
+.learning-icon {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.learning-card h3 {
+    color: #286344;
+    text-align: center;
+}
+
+.learning-card p {
+    color: #52675a;
+    line-height: 1.6;
+}
+
+.learning-card strong {
+    color: #348a55;
+}
+
+.learning-tips {
+    background: #dceedd;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.learning-tips h3 {
+    color: #286344;
+    text-align: center;
+}
+
+.learning-tips p {
+    color: #426a4b;
+    line-height: 1.7;
+}
+
+#learning-start-button {
+    font-size: 1.1rem;
+    padding: 18px 30px;
+}
+
+@media (max-width: 650px) {
+    .learning-grid {
+        grid-template-columns: 1fr;
     }
 }

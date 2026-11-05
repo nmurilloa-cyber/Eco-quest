@@ -5,14 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="description"
+        content="Eco Quest is an educational recycling game. Learn to recycle, answer questions and complete eco challenges."
+    >
+
     <title>Eco Quest | Recycling Game</title>
 
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/game.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./game.js" defer></script>
 </head>
 
 <body>
 
+    <!-- =========================================
+         HEADER
+    ========================================== -->
     <header class="top-bar">
         <a href="#" class="logo" id="home-link">
             🌿 Eco Quest
@@ -22,7 +30,10 @@
     </header>
 
     <main>
-        <!-- PANTALLA PRINCIPAL -->
+
+        <!-- =====================================
+             HOME SCREEN
+        ====================================== -->
         <section id="home-screen" class="hero">
 
             <div class="hero-content">
@@ -41,11 +52,19 @@
                 </p>
 
                 <div class="hero-buttons">
-                    <button id="start-button" class="btn btn-primary">
+                    <button
+                        id="start-button"
+                        class="btn btn-primary"
+                        type="button"
+                    >
                         ▶ Start Game
                     </button>
 
-                    <button id="instructions-button" class="btn btn-secondary">
+                    <button
+                        id="instructions-button"
+                        class="btn btn-secondary"
+                        type="button"
+                    >
                         How to Play?
                     </button>
                 </div>
@@ -55,10 +74,8 @@
                 </p>
             </div>
 
-            <div class="earth-container">
-                <div class="earth">
-                    🌎
-                </div>
+            <div class="earth-container" aria-hidden="true">
+                <div class="earth">🌎</div>
 
                 <span class="decoration leaf">🍃</span>
                 <span class="decoration recycle">♻️</span>
@@ -67,197 +84,763 @@
 
         </section>
 
-        <!-- TARJETAS DE NIVELES -->
-        <section class="levels-section">
+        <!-- =====================================
+             PLAYER REGISTRATION
+        ====================================== -->
+        <section
+            id="player-registration"
+            class="registration-overlay hidden"
+        >
+            <div class="registration-card">
+
+                <span class="registration-icon">🌎</span>
+
+                <span class="tag">WELCOME, ECO HERO!</span>
+
+                <h2>Ready for your adventure?</h2>
+
+                <p>
+                    Enter your name or nickname to begin your
+                    recycling adventure and compete for the best score!
+                </p>
+
+                <form id="registration-form">
+
+                    <label for="player-name">
+                        Your name or nickname
+                    </label>
+
+                    <input
+                        id="player-name"
+                        name="playerName"
+                        type="text"
+                        maxlength="20"
+                        placeholder="Example: GreenHero"
+                        autocomplete="nickname"
+                        required
+                    >
+
+                    <p
+                        id="registration-error"
+                        class="form-error hidden"
+                    >
+                        Please enter a name to continue.
+                    </p>
+
+                    <button
+                        id="registration-submit"
+                        class="btn btn-primary"
+                        type="submit"
+                    >
+                        Start Adventure 🚀
+                    </button>
+
+                </form>
+
+            </div>
+        </section>
+        
+<!-- RECYCLING EDUCATION SCREEN -->
+<section id="learning-screen" class="learning-screen hidden">
+
+    <div class="learning-container">
+
+        <span class="tag">🌎 ECO EDUCATION</span>
+
+        <h1>LEARN HOW TO RECYCLE!</h1>
+
+        <p class="learning-subtitle">
+            Learn how to separate waste correctly
+            before starting your adventure!
+        </p>
+
+        <div class="learning-grid">
+
+            <!-- PLASTIC -->
+            <article class="learning-card plastic-card">
+                <div class="learning-icon">🧴</div>
+                <h3>PLASTIC</h3>
+                <p>Plastic bottles, containers and packaging.</p>
+                <strong>Remember:</strong>
+                <p>Empty and clean plastic containers before recycling.</p>
+            </article>
+
+            <!-- PAPER -->
+            <article class="learning-card paper-card">
+                <div class="learning-icon">📦</div>
+                <h3>PAPER & CARDBOARD</h3>
+                <p>Newspapers, notebooks and cardboard boxes.</p>
+                <strong>Remember:</strong>
+                <p>Paper must be clean and dry.</p>
+            </article>
+
+            <!-- ORGANIC -->
+            <article class="learning-card organic-card">
+                <div class="learning-icon">🥬</div>
+                <h3>ORGANIC WASTE</h3>
+                <p>Fruit peels, vegetables and food leftovers.</p>
+                <strong>Remember:</strong>
+                <p>Organic waste can become compost for plants.</p>
+            </article>
+
+            <!-- GLASS -->
+            <article class="learning-card glass-card">
+                <div class="learning-icon">🍾</div>
+                <h3>GLASS</h3>
+                <p>Glass bottles and jars.</p>
+                <strong>Remember:</strong>
+                <p>Separate glass carefully. Never handle broken glass.</p>
+            </article>
+
+        </div>
+
+        <div class="learning-tips">
+            <h3>♻️ IMPORTANT RULES</h3>
+            <p>✓ Separate waste before throwing it away.</p>
+            <p>✓ Keep recyclable materials clean and dry.</p>
+            <p>✓ Never mix batteries with regular waste.</p>
+            <p>✓ Reduce, reuse and recycle whenever possible.</p>
+        </div>
+
+        <button id="learning-start-button"
+                class="btn btn-primary"
+                type="button">
+            🌱 NOW YOU ARE READY TO PLAY!
+        </button>
+
+    </div>
+
+</section>
+
+
+
+
+        <!-- =====================================
+             LEVEL SELECTION
+        ====================================== -->
+        <section id="levels-section" class="levels-section">
 
             <div class="section-heading">
                 <span class="tag">YOUR ADVENTURE</span>
-                <h2>Choose Your Challenge!</h2>
-                <p>Three levels, one greener planet.</p>
+
+                <h2>Your Eco Quest Journey</h2>
+
+                <p>
+                    Complete each level in order to become an Eco Hero.
+                </p>
             </div>
 
             <div class="levels-grid">
 
+                <!-- LEVEL 1 -->
                 <article class="level-card level-green">
+
                     <div class="level-icon">🗑️</div>
+
                     <span class="level-number">LEVEL 1</span>
+
                     <h3>Drag and Drop</h3>
+
                     <p>
-                        Put each piece of waste
-                        in the correct recycling bin.
+                        Put each piece of waste in the correct
+                        recycling bin.
                     </p>
-                    <span class="level-status">FIRST CHALLENGE</span>
+
+                    <button
+                        id="level-1-button"
+                        class="level-status level-button"
+                        type="button"
+                    >
+                        START LEVEL 1
+                    </button>
+
                 </article>
 
+                <!-- LEVEL 2 -->
                 <article class="level-card level-blue">
+
                     <div class="level-icon">🧠</div>
+
                     <span class="level-number">LEVEL 2</span>
+
                     <h3>Recycling Quiz</h3>
+
                     <p>
-                        Answer questions and
-                        test your recycling knowledge.
+                        Answer true or false questions and test
+                        your recycling knowledge.
                     </p>
-                    <span class="level-status">COMING SOON</span>
+
+                    <button
+                        id="level-2-button"
+                        class="level-status level-button"
+                        type="button"
+                        disabled
+                    >
+                        🔒 COMPLETE LEVEL 1 FIRST
+                    </button>
+
                 </article>
 
+                <!-- LEVEL 3 -->
                 <article class="level-card level-orange">
+
                     <div class="level-icon">🏆</div>
+
                     <span class="level-number">LEVEL 3</span>
+
                     <h3>Eco Challenges</h3>
+
                     <p>
-                        Complete eco missions
-                        and become an Eco Hero.
+                        Complete environmental missions and become
+                        an Eco Hero.
                     </p>
-                    <span class="level-status">COMING SOON</span>
+
+                    <button
+                        id="level-3-button"
+                        class="level-status level-button"
+                        type="button"
+                        disabled
+                    >
+                        🔒 COMPLETE LEVEL 2 FIRST
+                    </button>
+
                 </article>
 
             </div>
         </section>
 
-        <!-- NIVEL 1: DRAG AND DROP -->
+        <!-- =====================================
+             GAME AREA
+        ====================================== -->
         <section id="game-screen" class="game-screen hidden">
 
-            <button id="back-button" class="btn btn-secondary">
-                ← Back to Home
+            <button
+                id="back-button"
+                class="btn btn-secondary"
+                type="button"
+            >
+                ← Back to Journey
             </button>
 
-            <div class="game-intro">
-                <span class="tag">LEVEL 1 · RECYCLING</span>
-                <h2>Drag and Drop ♻️</h2>
+            <!-- PLAYER INFORMATION -->
+            <div class="player-status">
+
                 <p>
-                    Drag each item into the correct bin!
-                    You can also click an item and then click a bin.
+                    👤 Player:
+                    <strong id="player-name-display">Eco Hero</strong>
                 </p>
+
+                <p>
+                    🏆 Total score:
+                    <strong id="total-score-display">0</strong>
+                </p>
+
             </div>
 
-            <!-- PUNTUACION -->
+            <!-- LEVEL INTRO -->
+            <div class="game-intro">
+
+                <span id="current-level-tag" class="tag">
+                    LEVEL 1 · RECYCLING
+                </span>
+
+                <h2 id="game-title">
+                    Drag and Drop ♻️
+                </h2>
+
+                <p id="game-description">
+                    Sort all items into the correct recycling bins.
+                </p>
+
+            </div>
+
+            <!-- SCORE -->
             <div class="score-panel">
+
                 <div class="score-box">
-                    <span>⭐ Score</span>
+                    <span>⭐ Total Score</span>
                     <strong id="score">0</strong>
                 </div>
 
                 <div class="score-box">
-                    <span>♻️ Sorted</span>
-                    <strong id="sorted-count">0 / 8</strong>
+                    <span>📍 Progress</span>
+                    <strong id="progress-count">0 / 10</strong>
                 </div>
+
             </div>
 
-            <!-- MENSAJES -->
-            <div id="game-message"
+            <!-- GAME MESSAGE -->
+            <div
+                id="game-message"
                 class="game-message"
                 role="status"
-                aria-live="polite">
+                aria-live="polite"
+            >
                 Let's recycle and protect the planet!
             </div>
 
-            <!-- RESIDUOS -->
-            <div class="waste-area">
-                <h3>Waste to Sort</h3>
-                <p>Choose an item below.</p>
+            <!-- =================================
+                 LEVEL 1: DRAG AND DROP
+            ================================== -->
+            <div id="level-1-content" class="level-content">
 
-                <div id="waste-items" class="waste-grid"></div>
-            </div>
+                <div class="waste-area">
 
-            <!-- CONTENEDORES -->
-            <div class="bins-area">
-                <h3>Recycling Bins</h3>
+                    <h3>Waste to Sort</h3>
 
-                <div id="recycling-bins" class="bins-grid">
+                    <p>
+                        Drag an item into the correct container
+                        or click an item and then click a container.
+                    </p>
 
-                    <div class="recycling-bin bin-organic"
-                        data-category="organic"
-                        tabindex="0"
-                        role="button"
-                        aria-label="Organic waste bin">
-                        <span class="bin-icon">🌱</span>
-                        <h4>ORGANIC</h4>
-                        <p>Food waste</p>
-                        <span class="bin-count">0 items</span>
-                    </div>
-
-                    <div class="recycling-bin bin-plastic"
-                        data-category="plastic"
-                        tabindex="0"
-                        role="button"
-                        aria-label="Plastic recycling bin">
-                        <span class="bin-icon">🧴</span>
-                        <h4>PLASTIC</h4>
-                        <p>Bottles and bags</p>
-                        <span class="bin-count">0 items</span>
-                    </div>
-
-                    <div class="recycling-bin bin-paper"
-                        data-category="paper"
-                        tabindex="0"
-                        role="button"
-                        aria-label="Paper recycling bin">
-                        <span class="bin-icon">📄</span>
-                        <h4>PAPER</h4>
-                        <p>Paper and cardboard</p>
-                        <span class="bin-count">0 items</span>
-                    </div>
-
-                    <div class="recycling-bin bin-glass"
-                        data-category="glass"
-                        tabindex="0"
-                        role="button"
-                        aria-label="Glass recycling bin">
-                        <span class="bin-icon">🫙</span>
-                        <h4>GLASS</h4>
-                        <p>Glass bottles and jars</p>
-                        <span class="bin-count">0 items</span>
-                    </div>
+                    <div
+                        id="waste-items"
+                        class="waste-grid"
+                    ></div>
 
                 </div>
+
+                <div class="bins-area">
+
+                    <h3>Recycling Bins</h3>
+
+                    <div
+                        id="recycling-bins"
+                        class="bins-grid"
+                    >
+
+                        <!-- ORGANIC -->
+                        <div
+                            class="recycling-bin bin-organic"
+                            data-category="organic"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Organic waste bin"
+                        >
+                            <span class="bin-icon">🌱</span>
+
+                            <h4>ORGANIC</h4>
+
+                            <p>Food waste</p>
+
+                            <span class="bin-count">0 items</span>
+                        </div>
+
+                        <!-- PLASTIC -->
+                        <div
+                            class="recycling-bin bin-plastic"
+                            data-category="plastic"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Plastic recycling bin"
+                        >
+                            <span class="bin-icon">🧴</span>
+
+                            <h4>PLASTIC</h4>
+
+                            <p>Bottles and containers</p>
+
+                            <span class="bin-count">0 items</span>
+                        </div>
+
+                        <!-- PAPER -->
+                        <div
+                            class="recycling-bin bin-paper"
+                            data-category="paper"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Paper recycling bin"
+                        >
+                            <span class="bin-icon">📄</span>
+
+                            <h4>PAPER</h4>
+
+                            <p>Paper and cardboard</p>
+
+                            <span class="bin-count">0 items</span>
+                        </div>
+
+                        <!-- GLASS -->
+                        <div
+                            class="recycling-bin bin-glass"
+                            data-category="glass"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Glass recycling bin"
+                        >
+                            <span class="bin-icon">🫙</span>
+
+                            <h4>GLASS</h4>
+
+                            <p>Glass bottles and jars</p>
+
+                            <span class="bin-count">0 items</span>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
-            <!-- FINAL DEL NIVEL -->
-            <div id="level-complete" class="level-complete hidden">
-                <span class="completion-icon">🏆</span>
-                <h2>Level Completed!</h2>
-                <p id="final-score"></p>
-                <p>Great job! You are helping the planet. 🌎</p>
+            <!-- =================================
+                 LEVEL 2: RECYCLING QUIZ
+            ================================== -->
+            <div
+                id="level-2-content"
+                class="level-content hidden"
+            >
 
-                <button id="restart-level" class="btn btn-primary">
-                    Play Again ↻
+                <div class="quiz-panel">
+
+                    <div class="quiz-progress">
+
+                        <span id="quiz-question-number">
+                            Question 1 of 10
+                        </span>
+
+                        <span id="quiz-question-type">
+                            TRUE OR FALSE
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="quiz-illustration"
+                        aria-hidden="true"
+                    >
+                        🧠♻️
+                    </div>
+
+                    <h3 id="quiz-question">
+                        Loading question...
+                    </h3>
+
+                    <p id="quiz-hint" class="quiz-hint">
+                        Think carefully before answering!
+                    </p>
+
+                    <!-- TRUE OR FALSE -->
+                    <div
+                        id="quiz-true-false"
+                        class="quiz-options"
+                    >
+
+                        <button
+                            id="quiz-true-button"
+                            class="btn btn-secondary quiz-option"
+                            type="button"
+                            data-answer="true"
+                        >
+                            ✅ True
+                        </button>
+
+                        <button
+                            id="quiz-false-button"
+                            class="btn btn-secondary quiz-option"
+                            type="button"
+                            data-answer="false"
+                        >
+                            ❌ False
+                        </button>
+
+                    </div>
+
+                    <!-- MULTIPLE CHOICE -->
+                    <div
+                        id="quiz-multiple-choice"
+                        class="quiz-options hidden"
+                    ></div>
+
+                    <button
+                        id="quiz-next-button"
+                        class="btn btn-primary hidden"
+                        type="button"
+                    >
+                        Next Question →
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- =================================
+                 LEVEL 3: ECO CHALLENGES
+            ================================== -->
+            <div
+                id="level-3-content"
+                class="level-content hidden"
+            >
+
+                <div class="challenge-panel">
+
+                    <div class="challenge-header">
+
+                        <span class="challenge-icon">🌿</span>
+
+                        <div>
+
+                            <span id="challenge-number">
+                                ECO MISSION 1 OF 5
+                            </span>
+
+                            <h3 id="challenge-title">
+                                Loading mission...
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <p id="challenge-description">
+                        Choose the best action to help the planet.
+                    </p>
+
+                    <div
+                        id="challenge-options"
+                        class="challenge-options"
+                    ></div>
+
+                    <button
+                        id="challenge-submit-button"
+                        class="btn btn-primary"
+                        type="button"
+                        disabled
+                    >
+                        Confirm Answer
+                    </button>
+
+                    <button
+                        id="challenge-next-button"
+                        class="btn btn-primary hidden"
+                        type="button"
+                    >
+                        Next Mission →
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- =================================
+                 LEVEL COMPLETION
+            ================================== -->
+            <div
+                id="level-complete"
+                class="level-complete hidden"
+            >
+
+                <span class="completion-icon">🏆</span>
+
+                <h2 id="completion-title">
+                    Level Completed!
+                </h2>
+
+                <p id="final-score"></p>
+
+                <p id="completion-message">
+                    Amazing work! You helped protect the planet. 🌎
+                </p>
+
+                <button
+                    id="next-level-button"
+                    class="btn btn-primary"
+                    type="button"
+                >
+                    Continue to Next Level →
                 </button>
+
+                <button
+                    id="return-levels-button"
+                    class="btn btn-secondary"
+                    type="button"
+                >
+                    Return to Home
+                </button>
+
+            </div>
+
+            <!-- =================================
+                 ANSWER FEEDBACK POPUP
+            ================================== -->
+            <div
+                id="feedback-modal"
+                class="feedback-overlay hidden"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="feedback-title"
+            >
+
+                <div id="feedback-card" class="feedback-card">
+
+                    <span id="feedback-icon" class="feedback-icon">
+                        🌿
+                    </span>
+
+                    <h2 id="feedback-title">
+                        Great job!
+                    </h2>
+
+                    <p id="feedback-message">
+                        Keep helping the planet!
+                    </p>
+
+                    <p
+                        id="feedback-points"
+                        class="feedback-points"
+                    ></p>
+
+                    <button
+                        id="feedback-continue"
+                        class="btn btn-primary"
+                        type="button"
+                    >
+                        Continue →
+                    </button>
+
+                </div>
+
             </div>
 
         </section>
 
+        <!-- =====================================
+             FINAL RESULTS AND RANKING
+        ====================================== -->
+        <section id="ranking-screen" class="ranking-screen hidden">
+
+            <div class="ranking-header">
+
+                <span class="tag">ECO QUEST CHAMPION</span>
+
+                <div class="ranking-trophy">🏆</div>
+
+                <h2>Adventure Completed!</h2>
+
+                <p id="ranking-player-message">
+                    Congratulations, Eco Hero!
+                </p>
+
+            </div>
+
+            <!-- FINAL STATISTICS -->
+            <div class="ranking-summary">
+
+                <div class="ranking-stat">
+                    <span>⭐ Total score</span>
+                    <strong id="ranking-total-score">0</strong>
+                </div>
+
+                <div class="ranking-stat">
+                    <span>🌱 Levels completed</span>
+                    <strong id="ranking-levels-completed">3 / 3</strong>
+                </div>
+
+                <div class="ranking-stat">
+                    <span>⏱️ Time played</span>
+                    <strong id="ranking-time">00:00</strong>
+                </div>
+
+            </div>
+
+            
+
+            <!-- FINAL ACTIONS -->
+            <div class="ranking-actions">
+
+                <button
+                    id="play-again-button"
+                    class="btn btn-primary"
+                    type="button"
+                >
+                    Play Again 🔄
+                </button>
+
+                <button
+                    id="ranking-home-button"
+                    class="btn btn-secondary"
+                    type="button"
+                >
+                    Back to Home
+                </button>
+
+            </div>
+
+        </section>
 
     </main>
 
-    <!-- VENTANA DE INSTRUCCIONES -->
-    <div id="instructions-modal" class="modal hidden">
+    <!-- =========================================
+         INSTRUCTIONS MODAL
+    ========================================== -->
+    <div
+        id="instructions-modal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="instructions-title"
+    >
 
         <div class="modal-content">
-            <button id="close-modal" class="close-button"
-                    aria-label="Close instructions">
+
+            <button
+                id="close-modal"
+                class="close-button"
+                type="button"
+                aria-label="Close instructions"
+            >
                 ×
             </button>
 
             <span class="modal-icon">🌿</span>
-            <h2>How to Play</h2>
+
+            <h2 id="instructions-title">How to Play</h2>
 
             <ul>
-                <li>♻️ Sort waste into the correct bins.</li>
-                <li>🧠 Answer recycling questions.</li>
-                <li>⭐ Earn points for correct answers.</li>
-                <li>🌎 Learn how to protect the planet.</li>
+
+                <li>
+                    ♻️ Level 1: Sort 10 waste items into the correct bins.
+                </li>
+
+                <li>
+                    🧠 Level 2: Answer recycling questions.
+                </li>
+
+                <li>
+                    🌎 Level 3: Complete environmental missions.
+                </li>
+
+                <li>
+                    ⭐ Earn points for correct answers.
+                    Wrong answers show an explanation.
+                </li>
+
+                <li>
+                    🔓 Complete each level to unlock the next one.
+                </li>
+
             </ul>
 
-            <button id="modal-start-button" class="btn btn-primary">
+            <button
+                id="modal-start-button"
+                class="btn btn-primary"
+                type="button"
+            >
                 Let's Go!
             </button>
+
         </div>
 
     </div>
 
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
     <footer>
+
         <p>Made with 💚 for a greener planet.</p>
+
         <p>Eco Quest — Recycling Game</p>
+
     </footer>
 
 </body>
